@@ -29,3 +29,17 @@ get('/recipes/:id') do
   @recipe = Recipe.find(id)
   erb(:recipe)
 end
+
+get('/recipes/:id/edit') do
+  id = params.fetch(:id)
+  @recipe = Recipe.find(id)
+  erb(:recipe_edit)
+end
+
+post('/recipes/:id/edit') do
+  # @instructions = Instructions.create({:instructions => instructions})
+  ingredient = params.fetch("ingredient")
+  amount = params.fetch("amount")
+  unit = params.fetch("unit")
+  #when you submit, you get a hash, the key values are ingredient, amount, and unit. When you put in radish, the key would be ingredient
+  @ingredient = Ingredient.create({:name => name})
