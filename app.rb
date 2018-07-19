@@ -41,10 +41,13 @@ end
           end
 
 post('/categories/add') do
-  name = params.fetch('name')
-  @categories = Category.create({:name => name})
+  category_id = params.fetch('category_id').to_i
+  recipe_id = params.fetch('recipe_id').to_i
+  @recipe = Recipe.find(recipe_id)
+  category = Category.find(category_id)
+  @recipe.categories.push(category)
   @categories = Category.all
-  erb(:categories)
+  redirect back
 end
 
 post('/categories') do
@@ -93,8 +96,6 @@ end
 post('/recipes/:id/edit') do
   instruction = params.fetch(:instruction)
   id = params.fetch(:id)
-category_name = params.fetch("category_name")
-@category.categories_recipes.create({:name => category_name})
   @categories = Category.all
   @recipe = Recipe.find(id)
   @recipe.update({:instruction => instruction})

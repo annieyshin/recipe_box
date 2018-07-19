@@ -63,7 +63,8 @@
 <br>
 <p>Pick a category</p>
 <form action="/categories/add" method="post">
-  <select name="category_name">
+  <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+  <select name="category_id">
     <% @categories.each do |category| %>
     <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
