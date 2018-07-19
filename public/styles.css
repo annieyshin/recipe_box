@@ -1,0 +1,20 @@
+.table {
+  border: 1px solid orange;
+}
+
+td {
+  border: 1px solid orange;
+}
+
+th {
+  border: 1px solid orange;
+}
+
+body {
+  background-color: #ffff99;
+}
+
+.ingredient {
+  font-size: 32pt;
+  color: #990099;
+}
