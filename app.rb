@@ -23,6 +23,13 @@ get('/ingredients/new') do
   erb(:ingredients)
 end
 
+post('/ingredients/new') do
+  name = params.fetch('name')
+  @ingredient = Ingredient.create({:name =>name})
+  @ingredients = Ingredient.all
+  erb(:ingredients)
+end
+
 # post('/ingredients') do
 #   name = params.fetch('name')
 #   @ingredients = Ingredient.create({:name => name})
