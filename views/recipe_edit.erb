@@ -23,9 +23,13 @@
     <% end %>
   </tr>
 </table>
+
+<h2>Instructions</h2>
+    <%= @recipe.instruction %>
+
 <form action="/recipes/<%= @recipe.id %>/edit" method="post">
-  <label for="instructions">Add Instructions</label>
-  <input type="text" name="instructions" class="form-control">
+  <label for="instruction">Add Instructions</label>
+  <input type="text" name="instruction" class="form-control">
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -57,10 +61,24 @@
   <button type="submit" name="button">Add</button>
 </form>
 <br>
+<p>Pick a category</p>
+<form action="/categories/add" method="post">
+  <select name="category_name">
+    <% @categories.each do |category| %>
+    <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <br>
+  <button type="submit" name="button">Add</button>
+</form>
+
+<br>
 <form class="form-inline" method="get" action="/">
   <button type="submit" class="btn btn-danger" name="clear_btn">Home</button>
 </form>
-
+<br>
+<br>
 <form action="/recipes/<%= @recipe.id %>/edit" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" name="button">Delete</button>
