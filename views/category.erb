@@ -1,3 +1,11 @@
 <h2> <%= @category.name %> </h2>
 
-<% @category.recipes %>
+ <!-- <% @category.recipes.each() do |recipe| %>
+   <%= recipe.name %>
+ <% end %> -->
+
+<br>
+<br>
+<form class="form-inline" method="get" action="/">
+  <button type="submit" class="btn btn-danger" name="clear_btn">Home</button>
+</form>

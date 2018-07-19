@@ -19,8 +19,14 @@ RSpec.configure do |config|
     Ingredient.all.each do |ingredient|
       ingredient.destroy()
     end
+    Category.all.each do |category|
+      category.destroy()
+    end
     RecipeIngredient.all.each do |recipe_ingredient|
       recipe_ingredient.destroy()
     end
+    # CategoryRecipe.all.each do |category_recipe|
+    #   category_recipe.destroy()
+    # end
   end
 end

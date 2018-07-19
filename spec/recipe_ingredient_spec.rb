@@ -10,8 +10,7 @@ describe(RecipeIngredient) do
     recipe2 = Recipe.create({:name => "Tacos"})
     ingredient2 = Ingredient.create({:name => 'Salsa'})
     recipe2.recipe_ingredients.create({:ingredient => ingredient2, :amount => 1, :unit => "cup"})
-    recipe_ingredients = RecipeIngredient.where(recipe_id: recipe.id)
-    recipe_ingredients.destroy(recipe_ingredients.ids)
+    recipe_ingredients = RecipeIngredient.where(recipe_id: recipe.id).destroy_all
     recipe.destroy
     expect(RecipeIngredient.all).to(eq(recipe2.recipe_ingredients))
     expect(Recipe.all).to(eq([recipe2]))

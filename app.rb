@@ -28,17 +28,30 @@ get('/categories') do
   erb(:categories)
 end
 
-post('/categories') do
-  name = params.fetch("name")
+          # get('/categories/add') do
+          #   @categories = Category.all
+          #   erb(:categories)
+          # end
+
+          get('/categories/:id') do
+            id = params.fetch(:id)
+            @category = Category.find(id)
+            @recipes = Recipe.all
+            erb(:category)
+          end
+
+post('/categories/add') do
+  name = params.fetch('name')
   @categories = Category.create({:name => name})
   @categories = Category.all
   erb(:categories)
 end
 
-get('/categories/:id') do
-  id = params.fetch(:id)
-  @category = Category.find(id)
-  erb(:category)
+post('/categories') do
+  name = params.fetch("name")
+  @categories = Category.create({:name => name})
+  @categories = Category.all
+  erb(:categories)
 end
 
 post('/ingredients/new') do
@@ -80,6 +93,8 @@ end
 post('/recipes/:id/edit') do
   instruction = params.fetch(:instruction)
   id = params.fetch(:id)
+category_name = params.fetch("category_name")
+@category.categories_recipes.create({:name => category_name})
   @categories = Category.all
   @recipe = Recipe.find(id)
   @recipe.update({:instruction => instruction})
@@ -104,8 +119,16 @@ delete('/recipes/:id/edit') do
   @recipe = Recipe.find(params.fetch("id").to_i)
   recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id)
   recipe_ingredients.destroy(recipe_ingredients.ids)
+
+# @category = Category.find(params.fetch("id").to_i)
+# categories_recipes = CategoryRecipe.where(categories_id: @category.id)
+# categories_recipes.destroy(categories_recipes.ids)
+  @recipe.categories.destroy
   @recipe.destroy
+
   redirect("/recipes")
+
+
 end
 
 
