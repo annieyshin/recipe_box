@@ -18,6 +18,19 @@ get('/recipes/new') do
   erb(:recipe_form)
 end
 
+get('/ingredients/new') do
+  @ingredients = Ingredient.all
+  erb(:ingredients)
+end
+
+# post('/ingredients') do
+#   name = params.fetch('name')
+#   @ingredients = Ingredient.create({:name => name})
+#   @ingredients = Ingredient.all
+#   erb(:ingredients)
+# end
+
+
 post('/recipes') do
   name = params.fetch('name')
   @recipe = Recipe.create({:name => name})
