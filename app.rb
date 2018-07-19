@@ -54,7 +54,6 @@ patch('/recipes/:id/edit') do
   id = params.fetch(:id).to_i
   @recipe = Recipe.find(id)
   @recipe.recipe_ingredients.create({:ingredient => ingredient, :amount => amount, :unit => unit})
-  binding.pry
   @ingredients = Ingredient.all
   erb(:recipe_edit)
 end

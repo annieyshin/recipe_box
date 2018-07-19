@@ -1,4 +1,15 @@
 <h2>Edit <%= @recipe.name %></h2>
+<ul>
+  <% @recipe.recipe_ingredients.each() do |ingredient|%>
+  <li><%= ingredient.ingredient_id%></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @recipe.ingredients.each() do |ingredient|%>
+  <li><%= ingredient.name%></li>
+  <% end %>
+</ul>
 
 <form action="/recipes/<%= @recipe.id %>/edit" method="post">
   <label for="instructions">Add Instructions</label>
