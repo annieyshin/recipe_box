@@ -1,9 +1,7 @@
-<h2>Edit <%= @recipe.name %></h2>
+<h2 class="edit_ingredient">Edit <%= @recipe.name %></h2>
 
 <table class="table">
-  <tr>
-    <th>Ingredient Name</th>
-  </tr>
+  <p class="table_header">Ingredient Name</p>
   <tr>
     <% @recipe.recipe_ingredients.each() do |ingredient|%>
     <td><%= ingredient.ingredient_id%></td>
@@ -24,7 +22,6 @@
     <td><%= ingredient.unit%></td>
     <% end %>
   </tr>
-
 </table>
 <form action="/recipes/<%= @recipe.id %>/edit" method="post">
   <label for="instructions">Add Instructions</label>
@@ -36,7 +33,7 @@
 <form action="/recipes/<%= @recipe.id %>/edit" method="post">
   <input type="hidden" name="_method" value="patch">
   <br>
-  <p class="ingredient"><em>Add Ingredient</em></p>
+  <p class="ingredient">Add Ingredient</p>
   <div class="form-group">
     <label for="ingredient">Ingredient:</label>
     <select name="ingredient">
@@ -56,5 +53,10 @@
 <form action="/recipes/ingredients/new" method="post">
   <label for="new_ingredient_name">Add a new ingredient</label>
   <input type="text" name="new_ingredient_name" class="form-control">
+  <br>
   <button type="submit" name="button">Add</button>
+</form>
+<br>
+<form class="form-inline" method="get" action="/">
+  <button type="submit" class="btn btn-danger" name="clear_btn">Back</button>
 </form>

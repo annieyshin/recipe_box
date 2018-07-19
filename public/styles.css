@@ -1,13 +1,12 @@
-.table {
-  border: 1px solid orange;
-}
 
 td {
-  border: 1px solid orange;
+  border: 1px solid #862d86;
+  border-top: 1px solid #862d86;
 }
 
 th {
-  border: 1px solid orange;
+  border: 1px solid #862d86;
+  border-top: 1px solid #862d86;
 }
 
 body {
@@ -17,4 +16,20 @@ body {
 .ingredient {
   font-size: 32pt;
   color: #990099;
+  font-weight: 200;
+}
+
+.edit_ingredient {
+  font-size: 50pt;
+  color: #7300e6;
+  font-weight: 300;
+}
+
+button {
+  border-radius: 8px;
+  background-color: #ffcccc;
+}
+
+.table_header {
+  font-size: 20pt;
 }

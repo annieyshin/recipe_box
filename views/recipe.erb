@@ -1,2 +1,32 @@
 <h2><%= @recipe.name %></h2>
+
+<table class="table">
+  <p class="table_header">Ingredient Name</p>
+  <tr>
+    <% @recipe.recipe_ingredients.each() do |ingredient|%>
+    <td><%= ingredient.ingredient_id%></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% @recipe.ingredients.each() do |ingredient|%>
+    <td><%= ingredient.name%></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% @recipe.recipe_ingredients.each() do |ingredient|%>
+    <td><%= ingredient.amount%></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% @recipe.recipe_ingredients.each() do |ingredient|%>
+    <td><%= ingredient.unit%></td>
+    <% end %>
+  </tr>
+</table>
+<br>
 <a href="/recipes/<%= @recipe.id %>/edit"><span class="btn btn-warning">Edit</span></a>
+<br>
+<br>
+<form class="form-inline" method="get" action="/">
+  <button type="submit" class="btn btn-danger" name="clear_btn">Home</button>
+</form>
