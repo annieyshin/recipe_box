@@ -71,6 +71,15 @@ patch('/recipes/:id/edit') do
   erb(:recipe_edit)
 end
 
+delete('/recipes/:id/edit') do
+  @recipe = Recipe.find(params.fetch("id").to_i)
+  recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id)
+  recipe_ingredients.destroy(recipe_ingredients.ids)
+  @recipe.destroy
+  redirect("/recipes")
+end
+
+
 post('/recipes/ingredients/new') do
   ingredient_name = params.fetch('new_ingredient_name')
   new_ingredient = Ingredient.create({:name => ingredient_name})
